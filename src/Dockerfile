@@ -1,15 +1,14 @@
-# This Dockerfile demonstrates how to use Docker to create an image
-# after a build is produced and tested by Azure Pipelines
-# See http://docs.microsoft.com/azure/devops/pipelines/languages/docker for more information
-
-# Create a container with the compiled asp.net core app
+#FROM microsoft/aspnetcore-build:1.1.2 AS build-env
 FROM microsoft/aspnetcore:2.0
-#FROM microsoft/aspnetcore:2.0.5-jessie
-
-# Create app directory
 WORKDIR /app
 
-# Copy files from the artifact staging folder on agent
-COPY dotnetcore-sample/out .
+# Copy everything else and build
+COPY . ./
+
+RUN dotnet restore
+RUN dotnet build
+RUN dotnet publish "./dotnetcore-sample/dotnetcore-sample.csproj" -c Release -o ./out;
+
+WORKDIR /dotnetcore-sample/out
 
 ENTRYPOINT ["dotnet", "dotnetcore-sample.dll"]
