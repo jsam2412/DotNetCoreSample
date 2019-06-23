@@ -13,6 +13,6 @@ RUN dotnet publish "./dotnetcore-sample/dotnetcore-sample.csproj" -c Release -o 
 
 FROM microsoft/aspnetcore:2.0
 WORKDIR /dotnetcoreapp
-COPY --from=build-env /dotnetcore-sample/out .
+COPY --from=build-env /app/dotnetcore-sample/out .
 
 ENTRYPOINT ["dotnet", "dotnetcore-sample.dll"]
