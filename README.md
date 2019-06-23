@@ -12,7 +12,7 @@ Pull latest from Git on EC2
 
 Step 2: Build docker image:
 
-Go to src folder and run below commands
+Go to src folder (where you have dockerfile) and run below commands
 
 docker build dotnetcoreapp .
 
