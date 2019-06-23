@@ -12,7 +12,7 @@ Pull latest from Git on EC2
 
 Step 2: Build container commands:
 
-docker build dotnetcore .
+docker build dotnetcoreapp .
 
 docker images
 
@@ -22,5 +22,12 @@ Step 3: Run container commands:
 docker run -d -p 80:80 dotnetcoreapp
 
 docker container ls
+
+
+Step 4: Open HTTP port 80 for your EC2 instance in AWS (open port in inbound traffic).
+
+
+Step 5: Access application in browser using Public DNS (IPv4).
+
 
 
