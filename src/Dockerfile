@@ -1,5 +1,5 @@
-#FROM microsoft/aspnetcore-build:1.1.2 AS build-env
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/aspnetcore-build AS build-env
+#FROM microsoft/aspnetcore:2.0
 WORKDIR /app
 
 # Copy everything else and build
@@ -9,6 +9,10 @@ RUN dotnet restore
 RUN dotnet build
 RUN dotnet publish "./dotnetcore-sample/dotnetcore-sample.csproj" -c Release -o ./out;
 
-WORKDIR /dotnetcore-sample/out
+#WORKDIR /dotnetcore-sample/out
+
+FROM microsoft/aspnetcore:2.0
+WORKDIR /dotnetcoreapp
+COPY --from=build-env /dotnetcore-sample/out .
 
 ENTRYPOINT ["dotnet", "dotnetcore-sample.dll"]
