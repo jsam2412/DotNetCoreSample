@@ -29,7 +29,7 @@ docker container ls
 Step 4: Open HTTP port 80 for your EC2 instance in AWS (open port in inbound traffic).
 
 
-Step 5: Access application in browser using Public DNS (IPv4).
+Step 5: Access application in browser using Public DNS (IPv4) of your EC2 instance.
 
 
 
