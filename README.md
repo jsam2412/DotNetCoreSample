@@ -9,11 +9,15 @@ Step 1:
 Pull latest from Git on EC2
 
 Step 2: Build container commands:
+
 docker build dotnetcore .
+
 docker images
 
 Step 3: Run container commands:
+
 docker run -d -p 80:80 dotnetcoreapp
+
 docker container ls
 
 
