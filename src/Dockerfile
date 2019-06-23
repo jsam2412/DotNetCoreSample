@@ -15,6 +15,6 @@ FROM microsoft/aspnetcore:2.0
 WORKDIR /dotnetcoreapp
 COPY --from=build-env /app/dotnetcore-sample/out .
 
-EXPOSE 3000
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "dotnetcore-sample.dll"]
